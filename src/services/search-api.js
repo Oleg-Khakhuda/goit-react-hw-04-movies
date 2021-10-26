@@ -18,6 +18,14 @@ export class ThemovieFetch {
     return (this._searchQuery = value);
   }
 
+  // get id() {
+  //   return (this._id)
+  // }
+
+  // set id(movieId) {
+  //   return (this._id = movieId)
+  // }
+
   get page() {
     return this._page;
   }
@@ -35,7 +43,7 @@ export class ThemovieFetch {
 
     try {
       const result = await axios.get(url);
-      const data = result.results;
+      const data = result.data.results;
       return data;
     } catch (error) {
       return error.message;
@@ -47,19 +55,19 @@ export class ThemovieFetch {
 
     try {
       const result = await axios.get(url);
-      const data = result.results;
+      const data = result.data.results;
       return data;
     } catch (error) {
       return error.message;
     }
   }
 
-  async searchDetalesMovie() {
+  async searchDetailsMovie() {
     const url = `${this.base_url}/movie/${this.id}?api_key=${this.api_key}`;
 
     try {
       const result = await axios.get(url);
-      const data = result.results;
+      const data = result.data;
       return data;
     } catch (error) {
       return error.message;
@@ -71,7 +79,7 @@ export class ThemovieFetch {
 
     try {
       const result = await axios.get(url);
-      const data = result.results;
+      const data = result.data.results;
       return data;
     } catch (error) {
       return error.message;
@@ -83,7 +91,7 @@ export class ThemovieFetch {
 
     try {
       const result = await axios.get(url);
-      const data = result.results;
+      const data = result.data.results;
       return data;
     } catch (error) {
       return error.message;

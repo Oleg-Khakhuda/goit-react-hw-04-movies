@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ThemovieFetch } from '../services/search-api';
+import { ThemovieFetch } from '../../services/search-api';
 
 const newThemovieFetch = new ThemovieFetch();
 
@@ -13,7 +13,8 @@ const HomePage = () => {
     newThemovieFetch
       .searchTrendMovie()
       .then(movies => {
-        setMovies(movies.results);
+        setMovies(movies);
+        console.log(movies);
       })
       .catch(err => {
         console.log(err);
@@ -26,14 +27,7 @@ const HomePage = () => {
       <ul>
         {movies.map(movie => (
           <li key={movie.id}>
-            <Link
-              to={{
-                pathname: `/movies/${movie.id}`,
-                // state: { from: props.location.pathname },
-              }}
-            >
-              {movie.title || movie.name}
-            </Link>
+            <Link to={`/movies/${movie.id}`}>{movie.title || movie.name}</Link>
           </li>
         ))}
       </ul>
