@@ -7,7 +7,6 @@ const newThemovieFetch = new ThemovieFetch();
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
-  // const [status, setStatus] = useState('idle');
 
   useEffect(() => {
     newThemovieFetch

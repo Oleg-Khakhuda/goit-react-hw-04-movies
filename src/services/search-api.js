@@ -79,7 +79,7 @@ export class ThemovieFetch {
 
     try {
       const result = await axios.get(url);
-      const data = result.data.results;
+      const data = result.data.cast;
       return data;
     } catch (error) {
       return error.message;
