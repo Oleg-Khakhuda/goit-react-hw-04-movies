@@ -3,12 +3,21 @@ import { useState, useEffect } from 'react';
 import Cast from '../../components/Cast/Cast';
 import Reviews from '../../components/Reviews/Reviews';
 import default_movie from '../../images/default-movie.jpg';
-import { NavLink, Switch, Route, useParams } from 'react-router-dom';
+import {
+  NavLink,
+  Switch,
+  Route,
+  useParams,
+  useHistory,
+  useLocation,
+} from 'react-router-dom';
 import { ThemovieFetch } from '../../services/search-api';
 
 const newThemovieFetch = new ThemovieFetch();
 
 const MovieDetailsPage = () => {
+  const history = useHistory();
+  const location = useLocation();
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState({});
 
@@ -25,14 +34,19 @@ const MovieDetailsPage = () => {
       });
   }, [movieId]);
 
+  const handleClick = () =>
+    history.push(location?.state?.from?.location ?? '/');
+
   let poster = movieDetails.poster_path
     ? `https://image.tmdb.org/t/p/w300/${movieDetails.poster_path}`
     : default_movie;
 
   return (
     <>
-      <button>Go back</button>
-      {(movieDetails.id && (
+      <button type="button" onClick={handleClick}>
+        Go back
+      </button>
+      {movieDetails.id ? (
         <div>
           <article>
             <img
@@ -72,7 +86,9 @@ const MovieDetailsPage = () => {
             </div>
           </article>
         </div>
-      )) || <p>The resource you requested could not be found.</p>}
+      ) : (
+        <p>The resource you requested could not be found.</p>
+      )}
     </>
   );
 };

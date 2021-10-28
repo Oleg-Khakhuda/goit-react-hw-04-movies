@@ -23,22 +23,26 @@ const Reviews = () => {
   }, [movieId]);
 
   return (
-    (movieReviews.length && (
-      <ul>
-        {movieReviews.map(review => {
-          const { id, author, content, url } = review;
-          return (
-            <li key={id}>
-              <h5>Author: {author}</h5>
-              <p>{content}</p>
-              <a href={url} target="_blank" rel="noopener noreferrer">
-                Source
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    )) || <p>We don`t have any reviews for this movie</p>
+    <>
+      {movieReviews.length ? (
+        <ul>
+          {movieReviews.map(review => {
+            const { id, author, content, url } = review;
+            return (
+              <li key={id}>
+                <h5>Author: {author}</h5>
+                <p>{content}</p>
+                <a href={url} target="_blank" rel="noopener noreferrer">
+                  Source
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <p>We don`t have any reviews for this movie</p>
+      )}
+    </>
   );
 };
 
