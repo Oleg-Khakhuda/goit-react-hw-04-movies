@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ThemovieFetch } from '../../services/search-api';
+import default_poster from '../../images/unnamed.jpg';
 
 const newThemovieFetch = new ThemovieFetch();
 
@@ -26,7 +27,17 @@ const HomePage = () => {
       <ul>
         {movies.map(movie => (
           <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`}>{movie.title || movie.name}</Link>
+            <Link to={`/movies/${movie.id}`}>
+              <img
+                src={
+                  movie.poster_path
+                    ? `https://image.tmdb.org/t/p/w300/${movie.poster_path}`
+                    : default_poster
+                }
+                alt={movie.title || movie.name}
+              />
+              {movie.title || movie.name}
+            </Link>
           </li>
         ))}
       </ul>
