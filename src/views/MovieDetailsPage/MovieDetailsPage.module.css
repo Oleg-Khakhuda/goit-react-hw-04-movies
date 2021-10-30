@@ -1,0 +1,59 @@
+.btn {
+  background-color: rgb(252, 252, 252);
+  padding: 6px;
+  margin-left: 25px;
+  border-radius: 3px;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+.movieCard {
+  display: flex;
+  padding: 25px;
+}
+
+.descriptions {
+  padding: 25px;
+}
+
+.genreList {
+  list-style: none;
+  display: flex;
+  margin: -10px;
+  padding: 0;
+}
+.genreListItem {
+  margin: 10px;
+}
+.addInf {
+  padding: 25px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  margin: -20px;
+  padding: 0;
+}
+
+.navListItem {
+  margin: 20px;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+}
+
+.active,
+.link:hover,
+.link:focus {
+  font-weight: bold;
+  color: teal;
+}

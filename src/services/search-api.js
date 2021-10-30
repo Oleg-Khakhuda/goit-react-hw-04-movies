@@ -39,7 +39,7 @@ export class ThemovieFetch {
   }
 
   async searchTrendMovie() {
-    const url = `${this.base_url}/trending/all/day?api_key=${this.api_key}`;
+    const url = `${this.base_url}/trending/all/day?api_key=${this.api_key}&page=${this.page}`;
 
     try {
       const result = await axios.get(url);

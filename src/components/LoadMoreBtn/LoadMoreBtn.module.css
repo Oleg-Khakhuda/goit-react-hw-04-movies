@@ -1,0 +1,10 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  margin: 25px;
+}
+
+.btnLoad {
+  padding: 8px;
+  cursor: pointer;
+}

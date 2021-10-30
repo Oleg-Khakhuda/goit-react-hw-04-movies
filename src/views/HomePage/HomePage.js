@@ -1,8 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { ThemovieFetch } from '../../services/search-api';
-import default_poster from '../../images/unnamed.jpg';
+import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn';
+import MovieDetailsItem from '../../components/MovieDetailsItem/MovieDetailsItem';
+import s from '../HomePage/HomePage.module.css';
 
 const newThemovieFetch = new ThemovieFetch();
 
@@ -21,26 +22,26 @@ const HomePage = () => {
       });
   }, []);
 
+  const handleClick = () => {
+    newThemovieFetch.page = 1;
+    newThemovieFetch
+      .searchTrendMovie()
+      .then(movies => {
+        setMovies(prev => [...prev, ...movies]);
+        // setStatus('success');
+        // scroll();
+      })
+      .catch(err => {
+        // setStatus('error');
+        console.log(err);
+      });
+  };
+
   return (
     <>
-      <h1>Trending Today</h1>
-      <ul>
-        {movies.map(movie => (
-          <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`}>
-              <img
-                src={
-                  movie.poster_path
-                    ? `https://image.tmdb.org/t/p/w300/${movie.poster_path}`
-                    : default_poster
-                }
-                alt={movie.title || movie.name}
-              />
-              {movie.title || movie.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <h1 className={s.title}>Trending Today</h1>
+      <MovieDetailsItem movies={movies} />
+      <LoadMoreBtn onClick={handleClick} />
     </>
   );
 };

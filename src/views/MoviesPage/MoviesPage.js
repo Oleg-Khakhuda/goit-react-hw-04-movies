@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+
 import PropTypes from 'prop-types';
+import default_poster from '../../images/default-movie.jpg';
 import { ThemovieFetch } from '../../services/search-api';
+import MovieDetailsItem from '../../components/MovieDetailsItem/MovieDetailsItem';
+import s from '../MoviesPage/MoviesPage.module.css';
 
 const newThemovieFetch = new ThemovieFetch();
 
 const MoviesPage = () => {
   const [query, setQuery] = useState('');
   const [moviesQuery, setMoviesQuery] = useState([]);
-  const location = useLocation();
 
   const handleChange = e => {
     setQuery(e.currentTarget.value.toLowerCase());
@@ -32,9 +34,8 @@ const MoviesPage = () => {
   };
 
   return (
-    <div>
-      <h2>MoviesPage</h2>
-      <form onSubmit={handleSubmit}>
+    <div className={s.searchForm}>
+      <form className={s.form} onSubmit={handleSubmit}>
         <input
           type="text"
           autoComplete="off"
@@ -43,29 +44,14 @@ const MoviesPage = () => {
           name="query"
           value={query}
           onChange={handleChange}
+          className={s.input}
         />
 
-        <button type="submit">
+        <button className={s.button} type="submit">
           <span>Search</span>
         </button>
       </form>
-
-      <ul>
-        {moviesQuery.map(movie => (
-          <li key={movie.id}>
-            <Link
-              to={{
-                pathname: `/movies/${movie.id}`,
-                state: {
-                  search: location && location.search ? location.search : '',
-                },
-              }}
-            >
-              {movie.title || movie.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <MovieDetailsItem movies={moviesQuery} poster={default_poster} />
     </div>
   );
 };

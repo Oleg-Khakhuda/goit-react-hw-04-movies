@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import default_poster from '../../images/unnamed.jpg';
+import s from '../Cast/Cast.module.css';
 import { ThemovieFetch } from '../../services/search-api';
 
 const newThemovieFetch = new ThemovieFetch();
@@ -24,9 +25,9 @@ const Cast = () => {
   }, [movieId]);
 
   return (
-    <ul>
+    <ul className={s.Cast}>
       {movieCast.map(actor => (
-        <li key={actor.id}>
+        <li key={actor.id} className={s.ListItem}>
           <img
             src={
               actor.profile_path
@@ -34,10 +35,11 @@ const Cast = () => {
                 : default_poster
             }
             alt={actor.character}
-            // className={s.photo}
+            width="210"
+            className={s.Image}
           ></img>
-          <p>{`Name: ${actor.name}`}</p>
-          <p>{`Character: ${actor.character}`}</p>
+          <p className={s.Name}>{`${actor.name}`}</p>
+          <p className={s.Character}>{`Character: ${actor.character}`}</p>
         </li>
       ))}
     </ul>
