@@ -15,7 +15,6 @@ const HomePage = () => {
       .searchTrendMovie()
       .then(movies => {
         setMovies(movies);
-        console.log(movies);
       })
       .catch(err => {
         console.log(err);
@@ -28,11 +27,8 @@ const HomePage = () => {
       .searchTrendMovie()
       .then(movies => {
         setMovies(prev => [...prev, ...movies]);
-        // setStatus('success');
-        // scroll();
       })
       .catch(err => {
-        // setStatus('error');
         console.log(err);
       });
   };

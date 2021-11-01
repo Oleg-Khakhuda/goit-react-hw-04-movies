@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-
-import PropTypes from 'prop-types';
 import default_poster from '../../images/default-movie.jpg';
 import { ThemovieFetch } from '../../services/search-api';
 import MovieDetailsItem from '../../components/MovieDetailsItem/MovieDetailsItem';
@@ -25,7 +23,6 @@ const MoviesPage = () => {
         .searchMovie()
         .then(moviesQuery => {
           setMoviesQuery(moviesQuery);
-          console.log(moviesQuery);
         })
         .catch(error => {
           console.log(error);

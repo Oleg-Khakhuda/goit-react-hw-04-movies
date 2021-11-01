@@ -15,7 +15,6 @@ const Reviews = () => {
       .searchReviewsMovie()
       .then(movieReviews => {
         setMovieReviews(movieReviews);
-        console.log(movieReviews);
       })
       .catch(error => {
         console.log(error);

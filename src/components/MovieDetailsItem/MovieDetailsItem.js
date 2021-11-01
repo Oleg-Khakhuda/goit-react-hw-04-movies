@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import default_poster from '../../images/default-movie.jpg';
+import PropTypes from 'prop-types';
 import s from '../MovieDetailsItem/MovieDetailsItem.module.css';
 
 const MovieDetailsItem = ({ movies }) => {
@@ -37,6 +38,10 @@ const MovieDetailsItem = ({ movies }) => {
       </ul>
     </>
   );
+};
+
+MovieDetailsItem.propTypes = {
+  movies: PropTypes.array.isRequired,
 };
 
 export default MovieDetailsItem;

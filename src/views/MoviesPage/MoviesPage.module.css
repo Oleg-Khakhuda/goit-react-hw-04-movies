@@ -1,5 +1,4 @@
 .searchForm {
-  margin-left: 30px;
 }
 
 .form {
@@ -9,6 +8,7 @@
   background-color: #fff;
   border-radius: 3px;
   overflow: hidden;
+  padding-left: 25px;
 }
 
 .input {

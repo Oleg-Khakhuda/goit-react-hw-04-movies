@@ -17,7 +17,6 @@ const Cast = () => {
       .searchCreditsMovie()
       .then(movieCast => {
         setMovieCast(movieCast);
-        console.log(movieCast);
       })
       .catch(error => {
         console.log(error);

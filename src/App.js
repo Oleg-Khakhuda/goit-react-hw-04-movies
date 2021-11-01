@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-import routes from './routes';
+import { routes } from './routes';
 import Navigation from './components/Navigation/Navigation ';
 import './App.css';
 

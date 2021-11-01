@@ -29,7 +29,6 @@ const MovieDetailsPage = () => {
       .searchDetailsMovie()
       .then(movieDetails => {
         setMovieDetails(movieDetails);
-        console.log(movieDetails);
       })
       .catch(error => {
         console.log(error);
