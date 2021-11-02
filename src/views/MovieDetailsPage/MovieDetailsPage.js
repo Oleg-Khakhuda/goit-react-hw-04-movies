@@ -7,6 +7,7 @@ import {
   NavLink,
   Switch,
   Route,
+  useRouteMatch,
   useParams,
   useHistory,
   useLocation,
@@ -20,6 +21,7 @@ const newThemovieFetch = new ThemovieFetch();
 const MovieDetailsPage = () => {
   const history = useHistory();
   const location = useLocation();
+  const { url } = useRouteMatch();
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState({});
 
@@ -35,8 +37,7 @@ const MovieDetailsPage = () => {
       });
   }, [movieId]);
 
-  const handleClick = () =>
-    history.push(location?.state?.from?.location ?? '/');
+  const handleClick = () => history.push(location?.state?.from ?? '/');
 
   let poster = movieDetails.poster_path
     ? `https://image.tmdb.org/t/p/w300/${movieDetails.poster_path}`
@@ -80,9 +81,9 @@ const MovieDetailsPage = () => {
                 <NavLink
                   exact
                   to={{
-                    pathname: `/movies/${movieId}/cast`,
+                    pathname: `${url}/cast`,
                     state: {
-                      from: location,
+                      from: location.state ? location.state.from : '/movies',
                     },
                   }}
                   className={s.link}
@@ -94,9 +95,9 @@ const MovieDetailsPage = () => {
               <li className={s.navListItem}>
                 <NavLink
                   to={{
-                    pathname: `/movies/${movieId}/reviews`,
+                    pathname: `${url}/reviews`,
                     state: {
-                      from: location,
+                      from: location.state ? location.state.from : '/movies',
                     },
                   }}
                   className={s.link}

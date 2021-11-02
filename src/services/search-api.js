@@ -7,7 +7,6 @@ export class ThemovieFetch {
     this._searchQuery = '';
     this._page = 1;
     this.id = '';
-    // this._perPage = 12;
   }
 
   get searchQuery() {
@@ -17,14 +16,6 @@ export class ThemovieFetch {
   set searchQuery(value) {
     return (this._searchQuery = value);
   }
-
-  // get id() {
-  //   return (this._id)
-  // }
-
-  // set id(movieId) {
-  //   return (this._id = movieId)
-  // }
 
   get page() {
     return this._page;
